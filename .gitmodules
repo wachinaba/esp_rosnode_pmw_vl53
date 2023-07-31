@@ -2,3 +2,6 @@
 	path = components/arduino
 	url = https://github.com/espressif/arduino-esp32.git
 	branch = idf-release/v4.4
+[submodule "components/PMW3901"]
+	path = components/PMW3901
+	url = https://github.com/wachinaba/PMW3901
