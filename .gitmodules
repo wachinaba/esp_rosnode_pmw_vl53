@@ -5,3 +5,6 @@
 [submodule "components/PMW3901"]
 	path = components/PMW3901
 	url = https://github.com/wachinaba/PMW3901
+[submodule "components/VL53L5CX"]
+	path = components/VL53L5CX
+	url = https://github.com/wachinaba/VL53L5CX.git
