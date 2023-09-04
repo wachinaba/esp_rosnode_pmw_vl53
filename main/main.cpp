@@ -160,13 +160,13 @@ void loop()
 #include "PMW3901.h"
 
 #include <ros.h>
-#include <mavros_msgs/OpticalFlowRad.h>
+#include <optical_flow_msgs/OpticalFlowDelta.h>
 
 // Using digital pin 26 as chip select, but it can be any pin
 PMW3901 flow(26);
 ros::NodeHandle nh;
-mavros_msgs::OpticalFlowRad flow_msg;
-ros::Publisher flow_pub("optical_flow", &flow_msg);
+optical_flow_msgs::OpticalFlowDelta flow_msg;
+ros::Publisher flow_pub("optical_flow_delta", &flow_msg);
 
 void setup()
 {
@@ -209,14 +209,9 @@ void loop()
   flow_msg.header.stamp = nh.now();
   flow_msg.header.frame_id = "flow_frame";
   flow_msg.integration_time_us = 0;
-  flow_msg.integrated_x = deltaX;
-  flow_msg.integrated_y = deltaY;
-  flow_msg.integrated_xgyro = 0;
-  flow_msg.integrated_ygyro = 0;
-  flow_msg.integrated_zgyro = 0;
-  flow_msg.temperature = 0;
-  flow_msg.quality = squal;
-  flow_msg.time_delta_distance_us = 0;
+  flow_msg.delta_px = deltaX;
+  flow_msg.delta_py = deltaY;
+  flow_msg.surface_quality = squal;
 
   flow_pub.publish(&flow_msg);
   nh.spinOnce();

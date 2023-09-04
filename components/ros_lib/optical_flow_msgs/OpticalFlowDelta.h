@@ -17,9 +17,9 @@ namespace optical_flow_msgs
       _header_type header;
       typedef uint32_t _integration_time_us_type;
       _integration_time_us_type integration_time_us;
-      typedef int32_t _delta_px_type;
+      typedef float _delta_px_type;
       _delta_px_type delta_px;
-      typedef int32_t _delta_py_type;
+      typedef float _delta_py_type;
       _delta_py_type delta_py;
       typedef uint8_t _surface_quality_type;
       _surface_quality_type surface_quality;
@@ -43,7 +43,7 @@ namespace optical_flow_msgs
       *(outbuffer + offset + 3) = (this->integration_time_us >> (8 * 3)) & 0xFF;
       offset += sizeof(this->integration_time_us);
       union {
-        int32_t real;
+        float real;
         uint32_t base;
       } u_delta_px;
       u_delta_px.real = this->delta_px;
@@ -53,7 +53,7 @@ namespace optical_flow_msgs
       *(outbuffer + offset + 3) = (u_delta_px.base >> (8 * 3)) & 0xFF;
       offset += sizeof(this->delta_px);
       union {
-        int32_t real;
+        float real;
         uint32_t base;
       } u_delta_py;
       u_delta_py.real = this->delta_py;
@@ -77,7 +77,7 @@ namespace optical_flow_msgs
       this->integration_time_us |= ((uint32_t) (*(inbuffer + offset + 3))) << (8 * 3);
       offset += sizeof(this->integration_time_us);
       union {
-        int32_t real;
+        float real;
         uint32_t base;
       } u_delta_px;
       u_delta_px.base = 0;
@@ -88,7 +88,7 @@ namespace optical_flow_msgs
       this->delta_px = u_delta_px.real;
       offset += sizeof(this->delta_px);
       union {
-        int32_t real;
+        float real;
         uint32_t base;
       } u_delta_py;
       u_delta_py.base = 0;
@@ -104,7 +104,7 @@ namespace optical_flow_msgs
     }
 
     virtual const char * getType() override { return "optical_flow_msgs/OpticalFlowDelta"; };
-    virtual const char * getMD5() override { return "32c90da49cb11d455646c6af04880213"; };
+    virtual const char * getMD5() override { return "df08d94a64fbc01850df7dfb013eb400"; };
 
   };
 
